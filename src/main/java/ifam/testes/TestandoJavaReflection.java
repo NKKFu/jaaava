@@ -94,6 +94,27 @@ public class TestandoJavaReflection {
 
         }
 
+        // Now for class Estado
+        System.out.println("--- Now for class Estado ---");
+        nomeDaClasse = "Estado";
+        nomeCompletoDaClasse = nomeDoPacote+"."+nomeDaClasse;
+        classe = Class.forName(nomeCompletoDaClasse);
+
+        // Classe
+        System.out.println("Nome da Classe: "+classe.getCanonicalName());
+        modificadoresDaClasse = classe.getModifiers();
+
+        System.out.println("Modificador da Classe:"+Modifier.toString(modificadoresDaClasse));
+
+        // Atributos
+        System.out.println("*** ATRIBUTOS ***");
+        atributos = classe.getDeclaredFields();
+        for(Field atributo: atributos){
+            // mostrando os dados de cada atributo
+            System.out.print(Modifier.toString(atributo.getModifiers())+" ");
+            System.out.print(atributo.getGenericType().getTypeName()+" ");
+            System.out.println(atributo.getName());
+        }
     }
 
 }
